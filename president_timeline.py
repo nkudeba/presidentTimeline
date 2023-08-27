@@ -138,6 +138,6 @@ plt.yticks([])
 plt.xlabel('Year')
 plt.title('Timeline of U.S. Presidents by Birth, Death, and Presidency Years')
 plt.legend()
-plt.grid(True, axis='x')
+# plt.grid(True, axis='x')
 
 plt.show()
