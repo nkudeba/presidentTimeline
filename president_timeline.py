@@ -120,10 +120,6 @@ death_years2 = [president['death_year'] if president['death_year'] else None for
 # Generate the overlay plot
 plt.figure(figsize=(20, 15))
 plt.scatter(birth_years, np.arange(len(names)), color='blue', label='Birth Year')
-test = [president['death_year']]
-print(test)
-print(death_years)
-print(death_years2)
 plt.scatter(death_years2, np.arange(len(death_years)), color='red', label='Death Year')
 
 
