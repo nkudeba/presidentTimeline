@@ -114,12 +114,19 @@ timeline
 names = [president['name'] for president in presidents_data_sorted]
 birth_years = [president['birth_year'] for president in presidents_data_sorted]
 death_years = [president['death_year'] if president['death_year'] else 2023 for president in presidents_data_sorted]
+death_years2 = [president['death_year'] if president['death_year'] else None for president in presidents_data_sorted]
 
 
 # Generate the overlay plot
 plt.figure(figsize=(20, 15))
 plt.scatter(birth_years, np.arange(len(names)), color='blue', label='Birth Year')
-plt.scatter(death_years, np.arange(len(names)), color='red', label='Death Year')
+test = [president['death_year']]
+print(test)
+print(death_years)
+print(death_years2)
+plt.scatter(death_years2, np.arange(len(death_years)), color='red', label='Death Year')
+
+
 
 # Overlay presidency years
 for president in presidency_years:
@@ -132,7 +139,7 @@ for i, (birth, death, name) in enumerate(zip(birth_years, death_years, names)):
     plt.text(birth - 5, i, str(birth), ha='right', va='center', color='blue')
     plt.text(death + 5, i, str(death) if death != 2023 else "N/A", ha='left', va='center', color='red')
     plt.plot([birth, death], [i, i], color='gray', linestyle='--')
-    plt.text(start_year - 5, i, name, ha='right', va='center', backgroundcolor='green', color='white')
+    plt.text(start_year - 5, i, name, ha='right', va='center', backgroundcolor='white', color='green')
 
 plt.yticks([])
 plt.xlabel('Year')
