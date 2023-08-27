@@ -50,22 +50,6 @@ presidents_data = [
     {'name': 'Joe Biden', 'birth_year': 1942, 'death_year': None}  # Still alive as of September 2021
 ]
 
-# Sorting the data by birth_year for a chronological timeline
-presidents_data_sorted = sorted(presidents_data, key=lambda x: x['birth_year'])
-
-# Generate the timeline
-timeline = []
-for president in presidents_data_sorted:
-    timeline.append(f"{president['name']}: {president['birth_year']} - {president['death_year'] if president['death_year'] else 'N/A'}")
-
-timeline
-
-
-# Data preparation
-names = [president['name'] for president in presidents_data_sorted]
-birth_years = [president['birth_year'] for president in presidents_data_sorted]
-death_years = [president['death_year'] if president['death_year'] else 2023 for president in presidents_data_sorted]
-
 presidency_years = [
     {'name': 'George Washington', 'start_year': 1789, 'end_year': 1797},
     {'name': 'John Adams', 'start_year': 1797, 'end_year': 1801},
@@ -115,6 +99,23 @@ presidency_years = [
     {'name': 'Joe Biden', 'start_year': 2021, 'end_year': 2023}  # Assumed to be in office until 2023 based on data cut-off
 ]
 
+# Sorting the data by birth_year for a chronological timeline
+presidents_data_sorted = sorted(presidents_data, key=lambda x: x['birth_year'])
+
+# Generate the timeline
+timeline = []
+for president in presidents_data_sorted:
+    timeline.append(f"{president['name']}: {president['birth_year']} - {president['death_year'] if president['death_year'] else 'N/A'}")
+
+timeline
+
+
+# Data preparation
+names = [president['name'] for president in presidents_data_sorted]
+birth_years = [president['birth_year'] for president in presidents_data_sorted]
+death_years = [president['death_year'] if president['death_year'] else 2023 for president in presidents_data_sorted]
+
+
 # Generate the overlay plot
 plt.figure(figsize=(20, 15))
 plt.scatter(birth_years, np.arange(len(names)), color='blue', label='Birth Year')
@@ -128,7 +129,7 @@ for president in presidency_years:
 
 for i, (birth, death, name) in enumerate(zip(birth_years, death_years, names)):
     start_year = next((president['start_year'] for president in presidency_years if president['name'] == name), None)
-    plt.text(birth - 10, i, str(birth), ha='right', va='center', color='blue')
+    plt.text(birth - 5, i, str(birth), ha='right', va='center', color='blue')
     plt.text(death + 5, i, str(death) if death != 2023 else "N/A", ha='left', va='center', color='red')
     plt.plot([birth, death], [i, i], color='gray', linestyle='--')
     plt.text(start_year - 5, i, name, ha='right', va='center', backgroundcolor='green', color='white')
