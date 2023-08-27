@@ -128,7 +128,7 @@ plt.scatter(death_years2, np.arange(len(death_years)), color='red', label='Death
 for president in presidency_years:
     if president['name'] in names:
         i = names.index(president['name'])
-        plt.plot([president['start_year'], president['end_year']], [i, i], color='green', linewidth=4, alpha=0.7, label='Presidency Years' if president['name'] == 'George Washington' else '')
+        plt.plot([president['start_year'], president['end_year']], [i, i], color='green', linewidth=4, alpha=1.0, zorder=40, label='Presidency Years' if president['name'] == 'George Washington' else '')
 
 for i, (birth, death, name) in enumerate(zip(birth_years, death_years, names)):
     start_year = next((president['start_year'] for president in presidency_years if president['name'] == name), None)
