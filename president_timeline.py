@@ -126,16 +126,6 @@ for president in presidency_years:
         i = names.index(president['name'])
         plt.plot([president['start_year'], president['end_year']], [i, i], color='green', linewidth=4, alpha=0.7, label='Presidency Years' if president['name'] == 'George Washington' else '')
 
-# Add labels and lines
-print(birth_years)
-print(names)
-print(presidency_years)
-
-# Access and print the whole object with Bill Clinton
-bill_clinton_object = next((president for president in presidency_years if president['name'] == 'Bill Clinton'), None)
-barack_obama_start_year = next((president['start_year'] for president in presidency_years if president['name'] == 'Barack Obama'), None)
-print(barack_obama_start_year)
-
 for i, (birth, death, name) in enumerate(zip(birth_years, death_years, names)):
     start_year = next((president['start_year'] for president in presidency_years if president['name'] == name), None)
     plt.text(birth - 10, i, str(birth), ha='right', va='center', color='blue')
