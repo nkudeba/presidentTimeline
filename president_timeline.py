@@ -141,7 +141,7 @@ for i, (birth, death, name) in enumerate(zip(birth_years, death_years, names)):
     plt.text(birth - 10, i, str(birth), ha='right', va='center', color='blue')
     plt.text(death + 5, i, str(death) if death != 2023 else "N/A", ha='left', va='center', color='red')
     plt.plot([birth, death], [i, i], color='gray', linestyle='--')
-    plt.text(start_year - 5, i, name, ha='right', va='center', backgroundcolor='0.75')
+    plt.text(start_year - 5, i, name, ha='right', va='center', backgroundcolor='green', color='white')
 
 plt.yticks([])
 plt.xlabel('Year')
